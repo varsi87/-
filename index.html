@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>مگاپنل تخصصی گیم (حجم پنل 2 ترابایت) | PUBGメAZVIX</title>
+<title>مگاپنل تخصصی گیم (2 ترابایت) | PUBGメAZVIX</title>
 <style>
 :root{--accent:#14b8a6;--accent2:#f97316;--card:rgba(12,18,34,0.95);--text:#e2e8f0;--muted:#94a3b8;--border:#14b8a655}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -37,7 +37,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#0a1220;border:1px solid var(--accent);padding:12px 18px;border-radius:12px;z-index:99;opacity:0;transition:0.3s;font-weight:600;max-width:90%;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .quota{height:8px;border-radius:999px;background:#0f172a;overflow:hidden;margin-top:6px;border:1px solid rgba(255,255,255,0.08)}
-.quota>div{height:100%;border-radius:999px}
+.quota>div{height:100%0;border-radius:999px}
 .owner{color:#a78bfa;font-size:0.85rem;font-weight:700}
 .note{font-size:0.78rem;color:var(--muted);margin-top:10px;padding:10px;background:rgba(245,158,11,0.1);border-radius:8px;border-right:3px solid #f59e0b}
 </style>
@@ -45,7 +45,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
 <body>
 <div class="wrap">
   <header>
-    <h1>🎮 مگا پنل تخصصی گیم (حجم کل: 2 ترابایت)</h1>
+    <h1>🎮 مگاپنل تخصصی گیم (2 ترابایت - پینگ زیر ۱۰۰)</h1>
     <p style="color:var(--muted);margin-top:6px;font-size:0.9rem">مخصوص گیم و پابجی، بدون افت پینگ و قطعی | PUBGメAZVIX</p>
     <span class="badge">مالک PUBGメAZVIX</span>
   </header>
@@ -109,7 +109,6 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
 
 <script>
 (function(){
-  // حجم کل روی 2000 گیگابایت (2 ترابایت) تنظیم شد
   var PANEL = {"totalGB": 2000, countryName: "سرور گیمینگ (پینگ زیر ۱۰۰)", flag: "🎮", endpoint: "dnw.s14.viptelbot.top:51820"};
   var FIXED_PRIV = "DHprU2miupA3RuOTF3GZXNKdI0jwELh7JcjPZ4zDOBM=";
   var FIXED_IP = "10.66.233.244";
@@ -118,7 +117,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
   var DNS_VAL = "87.107.54.1, 87.248.145.40";
   var MTU_VAL = "1400";
   
-  var STORAGE_KEY = "wg_wireguard_gaming_ping_2tb_v1";
+  var STORAGE_KEY = "wg_wireguard_gaming_ping_2tb_v2";
   var CONFIGS = [];
   var CONSUMED = 0;
   var LAST_SUB_URL = "";
@@ -156,8 +155,20 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
         CONSUMED = Number(o.consumedGB) || 0;
         LAST_SUB_URL = o.httpsSubUrl || "";
       } else {
-        CONFIGS = [];
-        CONSUMED = 0;
+        // ایجاد یک کانفیگ پیش‌فرض اولیه برای اینکه پنل خالی نباشد
+        CONFIGS = [{
+          id: "default_cfg",
+          name: "PUBG_Pro_Gamer_Default",
+          days: 30,
+          gb: 50,
+          usedGB: 0,
+          confText: buildConf("PUBG_Pro_Gamer_Default", 30, 50).conf,
+          createdAt: new Date().toISOString(),
+          expiresAt: new Date(Date.now()+30*86400000).toISOString(),
+          inSub: true,
+          httpsSubUrl: null
+        }];
+        CONSUMED = 50;
         save();
       }
     } catch (e) { CONFIGS = []; CONSUMED = 0; }
