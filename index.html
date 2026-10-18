@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>مگاپنل تخصصی گیم (حجم پنل 2000) | PUBGメAZVIX</title>
+<title>مگاپنل تخصصی گیم (حجم پنل 2 ترابایت) | PUBGメAZVIX</title>
 <style>
 :root{--accent:#14b8a6;--accent2:#f97316;--card:rgba(12,18,34,0.95);--text:#e2e8f0;--muted:#94a3b8;--border:#14b8a655}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -45,7 +45,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
 <body>
 <div class="wrap">
   <header>
-    <h1>🎮 مگا پنل تخصصی گیم (حجم پنل 2000)</h1>
+    <h1>🎮 مگا پنل تخصصی گیم (حجم کل: 2 ترابایت)</h1>
     <p style="color:var(--muted);margin-top:6px;font-size:0.9rem">مخصوص گیم و پابجی، بدون افت پینگ و قطعی | PUBGメAZVIX</p>
     <span class="badge">مالک PUBGメAZVIX</span>
   </header>
@@ -72,7 +72,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
       <div class="row">
         <div><label>روز اعتبار</label><input type="number" id="cfgDays" min="1" max="365" value="30"/></div>
         <div><label>کاربر</label><input type="number" id="cfgUsers" min="1" max="50" value="1"/></div>
-        <div><label>حجم (گیگ)</label><input type="number" id="cfgGB" min="1" max="1000" value="100"/></div>
+        <div><label>حجم (گیگ)</label><input type="number" id="cfgGB" min="1" max="2000" value="100"/></div>
       </div>
       <label>نام مشتری / گیمر</label>
       <input type="text" id="cfgName" placeholder="PUBG_Pro_Gamer"/>
@@ -100,7 +100,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
         <button type="button" class="btn btn-o" id="btnOpenSub">🌐 باز کردن صفحه ساب</button>
         <button type="button" class="btn btn-o" id="btnCopyB64">📋 کپی Base64</button>
       </div>
-      <div class="note">ظرفیت کل مگاپنل ۸۰۰۰ گیگابایت با سرور پینگ پایین تنظیم شده است. مالک PUBGメAZVIX</div>
+      <div class="note">ظرفیت کل مگاپنل ۲ ترابایت (۲۰۰۰ گیگابایت) با سرور پینگ پایین تنظیم شده است. مالک PUBGメAZVIX</div>
       <div id="subCfgList" style="margin-top:14px"></div>
     </div>
   </div>
@@ -109,8 +109,8 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
 
 <script>
 (function(){
-  var PANEL = {"totalGB": 8000, countryName: "سرور گیمینگ (پینگ زیر ۱۰۰)", flag: "🎮", endpoint: "dnw.s14.viptelbot.top:51820"};
-  // تنظیم دقیق پارامترهای کانفیگ گیمینگ ارسالی شما
+  // حجم کل روی 2000 گیگابایت (2 ترابایت) تنظیم شد
+  var PANEL = {"totalGB": 2000, countryName: "سرور گیمینگ (پینگ زیر ۱۰۰)", flag: "🎮", endpoint: "dnw.s14.viptelbot.top:51820"};
   var FIXED_PRIV = "DHprU2miupA3RuOTF3GZXNKdI0jwELh7JcjPZ4zDOBM=";
   var FIXED_IP = "10.66.233.244";
   var SERVER_PUB = "H0e6MaCvUHwIXS+53pDTDvGmiKvwQo8Yh2wNqgV7r74=";
@@ -118,7 +118,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
   var DNS_VAL = "87.107.54.1, 87.248.145.40";
   var MTU_VAL = "1400";
   
-  var STORAGE_KEY = "wg_wireguard_gaming_ping_sub_v1";
+  var STORAGE_KEY = "wg_wireguard_gaming_ping_2tb_v1";
   var CONFIGS = [];
   var CONSUMED = 0;
   var LAST_SUB_URL = "";
@@ -228,7 +228,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
   }
 
   function updateStatus() {
-    var total = Number(PANEL.totalGB)||8000;
+    var total = Number(PANEL.totalGB)||2000;
     var used = Math.max(0, Number(CONSUMED)||0);
     var rem = Math.max(0, total - used);
     var act = CONFIGS.filter(isActive).length;
@@ -409,7 +409,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
   }
 
   function createConfig() {
-    var total = Number(PANEL.totalGB)||8000;
+    var total = Number(PANEL.totalGB)||2000;
     var rem = Math.max(0, total - (Number(CONSUMED)||0));
     if (rem <= 0) { toast("⛔ حجم پنل تمام شده"); return; }
     var days = parseInt(document.getElementById("cfgDays").value,10)||30;
@@ -523,7 +523,7 @@ textarea{min-height:70px;font-family:monospace;font-size:0.75rem;direction:ltr;t
 
   load();
   renderAll();
-  toast("مگاپنل گیمینگ با پینگ زیر ۱۰۰ آماده شد!");
+  toast("مگاپنل گیمینگ ۲ ترابایتی آماده شد!");
 })();
 </script>
 </body>
